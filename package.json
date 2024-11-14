@@ -6,9 +6,9 @@
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
+    "deploy": "gh-pages -d dist",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare",
-    "deploy": "gh-pages -d .output/public"
+    "postinstall": "nuxt prepare"
   },
   "dependencies": {
     "lucide-vue-next": "^0.456.0",
