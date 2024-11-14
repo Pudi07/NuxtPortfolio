@@ -2,7 +2,7 @@
   <div :class="{ 'dark': isDarkMode }" class="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
     <!-- Navigation -->
     <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-      <a href="#" class="text-2xl font-bold">WebDesigner</a>
+      <a href="#" class="text-2xl font-bold">Pierre Barth</a>
       <div class="flex items-center space-x-4">
         <div v-for="item in navItems" :key="item">
           <a :href="`#${item.toLowerCase()}`" class="hover:text-purple-600 dark:hover:text-purple-400 transition-colors">{{ item }}</a>
@@ -19,7 +19,9 @@
       <h1 class="text-5xl md:text-6xl font-extrabold mb-4">Des designs qui inspirent</h1>
       <p class="text-xl mb-8">Transformer des idées en expériences numériques époustouflantes</p>
       <button class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-full transition-colors">
-        Commencer
+        <a href=#contact>
+        Contactez-moi
+        </a>
       </button>
     </header>
 
@@ -36,23 +38,30 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="container mx-auto px-6 py-16">
-      <h2 class="text-3xl font-bold text-center mb-12">Projects recents</h2>
+    <section id="projets" class="container mx-auto px-6 py-16">
+      <h2 class="text-3xl font-bold text-center mb-12">Projets recents</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <div v-for="project in projects" :key="project.title" class="group relative overflow-hidden rounded-lg">
-          <img :src="project.image" :alt="project.title" class="w-full h-64 object-cover transition-transform group-hover:scale-110" />
+          <a :href="project.link" target="_blank" rel="noopener noreferrer">
+          <img 
+          :src="project.image" 
+          :alt="project.title"
+          class="w-full h-64 object-cover transition-transform group-hover:scale-105"
+          loading="lazy"
+        />
           <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end">
             <div class="p-4">
               <h3 class="text-xl font-semibold mb-2 text-white">{{ project.title }}</h3>
               <p class="text-sm text-gray-200">{{ project.description }}</p>
             </div>
           </div>
+        </a>
         </div>
       </div>
     </section>
 
     <!-- Testimonials Section -->
-    <section id="testimonials" class="container mx-auto px-6 py-16">
+    <section id="avis" class="container mx-auto px-6 py-16">
       <h2 class="text-3xl font-bold text-center mb-12">Ce que disent les clients</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div v-for="testimonial in testimonials" :key="testimonial.name" class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg">
@@ -101,6 +110,9 @@
 import { ref } from 'vue'
 import { LayoutGrid, Palette, Code, Globe, Sun as SunIcon, Moon as MoonIcon } from 'lucide-vue-next'
 
+import projet1 from '~/assets/img/projet1.png';
+import projet2 from '~/assets/img/projet2.png';
+
 const isDarkMode = ref(false)
 
 const toggleDarkMode = () => {
@@ -122,7 +134,18 @@ const services = [
 ]
 
 const projects = [
-  { title: 'E-commerce Platform', image: '/placeholder.svg?height=400&width=600', description: 'A fully responsive online store with seamless checkout process.' },
+{ 
+    title: 'Site Portfolio FullPage', 
+    image: projet1, 
+    description: 'Un site portfolio moderne et minimaliste conçu avec Vue 3 et la librairie de défilement FullPage' ,
+    link: 'https://pierre-barth.fr/' 
+  },
+  { 
+    title: 'Site de ressources pédagogiques', 
+    image: projet2, 
+    description: 'Un site web éducatif interactif pour les étudiants et les enseignants',
+    link: 'https://pedagogie.orgnac.com/'
+  },
 ]
 
 const testimonials = [
@@ -155,5 +178,38 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Additional styles can be added here if needed */
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ddd;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #bbb ;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9333ea ;
+}
+
+/* Mode sombre */
+html.dark ::-webkit-scrollbar-track {
+  background: #333;
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: #555;
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #9333ea ;
+}
+
+
+
 </style>
