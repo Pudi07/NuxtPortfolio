@@ -1,10 +1,16 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-white">
+  <div :class="{ 'dark': isDarkMode }" class="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
     <!-- Navigation -->
     <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
       <a href="#" class="text-2xl font-bold">WebDesigner</a>
-      <div class="space-x-4">
-        <a v-for="item in navItems" :key="item" :href="`#${item.toLowerCase()}`" class="hover:text-purple-400 transition-colors">{{ item }}</a>
+      <div class="flex items-center space-x-4">
+        <div v-for="item in navItems" :key="item">
+          <a :href="`#${item.toLowerCase()}`" class="hover:text-purple-600 dark:hover:text-purple-400 transition-colors">{{ item }}</a>
+        </div>
+        <button @click="toggleDarkMode" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 transition-colors">
+          <SunIcon v-if="isDarkMode" class="w-5 h-5" />
+          <MoonIcon v-else class="w-5 h-5" />
+        </button>
       </div>
     </nav>
 
@@ -20,11 +26,11 @@
     <!-- Services Section -->
     <section id="services" class="container mx-auto px-6 py-16">
       <h2 class="text-3xl font-bold text-center mb-12">My Services</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div v-for="service in services" :key="service.title" class="bg-gray-800 p-6 rounded-lg text-center hover:shadow-lg transition-shadow">
-          <component :is="service.icon" class="w-12 h-12 mx-auto mb-4 text-purple-400" />
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div v-for="service in services" :key="service.title" class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg text-center hover:shadow-lg transition-shadow">
+          <component :is="service.icon" class="w-12 h-12 mx-auto mb-4 text-purple-600 dark:text-purple-400" />
           <h3 class="text-xl font-semibold mb-2">{{ service.title }}</h3>
-          <p class="text-gray-400">{{ service.description }}</p>
+          <p class="text-gray-600 dark:text-gray-400">{{ service.description }}</p>
         </div>
       </div>
     </section>
@@ -37,8 +43,8 @@
           <img :src="project.image" :alt="project.title" class="w-full h-64 object-cover transition-transform group-hover:scale-110" />
           <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end">
             <div class="p-4">
-              <h3 class="text-xl font-semibold mb-2">{{ project.title }}</h3>
-              <p class="text-sm">{{ project.description }}</p>
+              <h3 class="text-xl font-semibold mb-2 text-white">{{ project.title }}</h3>
+              <p class="text-sm text-gray-200">{{ project.description }}</p>
             </div>
           </div>
         </div>
@@ -49,13 +55,13 @@
     <section id="testimonials" class="container mx-auto px-6 py-16">
       <h2 class="text-3xl font-bold text-center mb-12">What Clients Say</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div v-for="testimonial in testimonials" :key="testimonial.name" class="bg-gray-800 p-6 rounded-lg">
+        <div v-for="testimonial in testimonials" :key="testimonial.name" class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg">
           <p class="mb-4 italic">"{{ testimonial.quote }}"</p>
           <div class="flex items-center">
             <img :src="testimonial.avatar" :alt="testimonial.name" class="w-12 h-12 rounded-full mr-4" />
             <div>
               <h4 class="font-semibold">{{ testimonial.name }}</h4>
-              <p class="text-sm text-gray-400">{{ testimonial.position }}</p>
+              <p class="text-sm text-gray-600 dark:text-gray-400">{{ testimonial.position }}</p>
             </div>
           </div>
         </div>
@@ -68,15 +74,15 @@
       <form @submit.prevent="submitForm" class="max-w-lg mx-auto">
         <div class="mb-4">
           <label for="name" class="block mb-2">Name</label>
-          <input type="text" id="name" v-model="form.name" required class="w-full px-4 py-2 rounded bg-gray-800 text-white" />
+          <input type="text" id="name" v-model="form.name" required class="w-full px-4 py-2 rounded bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white border border-gray-300 dark:border-gray-700" />
         </div>
         <div class="mb-4">
           <label for="email" class="block mb-2">Email</label>
-          <input type="email" id="email" v-model="form.email" required class="w-full px-4 py-2 rounded bg-gray-800 text-white" />
+          <input type="email" id="email" v-model="form.email" required class="w-full px-4 py-2 rounded bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white border border-gray-300 dark:border-gray-700" />
         </div>
         <div class="mb-4">
           <label for="message" class="block mb-2">Message</label>
-          <textarea id="message" v-model="form.message" required class="w-full px-4 py-2 rounded bg-gray-800 text-white" rows="4"></textarea>
+          <textarea id="message" v-model="form.message" required class="w-full px-4 py-2 rounded bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white border border-gray-300 dark:border-gray-700" rows="4"></textarea>
         </div>
         <button type="submit" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded transition-colors">
           Send Message
@@ -85,15 +91,26 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-center py-6">
-      <p>&copy; 2024 WebDesigner. Pierre Barth</p>
+    <footer class="bg-gray-200 dark:bg-gray-800 text-center py-6">
+      <p>&copy; 2023 WebDesigner. All rights reserved.</p>
     </footer>
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
-import { LayoutGrid, Palette, Code, Globe } from 'lucide-vue-next'
+import { LayoutGrid, Palette, Code, Globe, Sun as SunIcon, Moon as MoonIcon } from 'lucide-vue-next'
+
+const isDarkMode = ref(false)
+
+const toggleDarkMode = () => {
+  isDarkMode.value = !isDarkMode.value
+  if (isDarkMode.value) {
+    document.documentElement.classList.add('dark')
+  } else {
+    document.documentElement.classList.remove('dark')
+  }
+}
 
 const navItems = ['Services', 'Projects', 'Testimonials', 'Contact']
 
@@ -129,6 +146,16 @@ const submitForm = () => {
 }
 </script>
 
-<style scoped>
-/* Add any additional styles here */
+<style>
+/* Ensure the page takes up at least the full height of the viewport */
+html, body {
+  height: 100%;
+}
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Additional styles can be added here if needed */
 </style>
