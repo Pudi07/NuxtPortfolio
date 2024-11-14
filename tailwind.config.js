@@ -8,6 +8,11 @@ export default {
     "./app.vue",
     "./error.vue",
   ],
+  app: {
+    router: {
+      base: '/NuxtPortfolio/'
+    }
+  },
   darkMode: 'selector',
   theme: {
     extend: {},
