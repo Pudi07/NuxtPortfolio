@@ -1,7 +1,7 @@
 <template>
   <div :class="{ 'dark': isDarkMode }" class="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
     <!-- Navigation -->
-    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+    <nav class="container mx-auto px-6 py-4 flex justify-between items-center sticky top-0 z-10 bg-white dark:bg-gray-900 " :class="{'shadow-md': isScrolled}">
       <a href="#" class="text-2xl font-bold">Pierre Barth</a>
       <div class="flex items-center space-x-4">
         <div v-for="item in navItems" :key="item">
@@ -100,9 +100,21 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-200 dark:bg-gray-800 text-center py-6">
-      <p>&copy; 2024 Pierre Barth</p>
+    <footer class="bg-gray-200 dark:bg-gray-800 py-6">
+      <div class="container mx-auto px-6 flex justify-between items-center">
+        <p>&copy; 2024 Pierre Barth.</p>
+        <div class="flex items-center space-x-4">
+          <a href="mailto:contact@webdesigner.com" class="hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
+            contact@pierre-barth.fr
+          </a>
+          <span>|</span>
+          <a href="https://www.linkedin.com/in/barth-pierre/" class="hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
+            LinkedIn
+          </a>
+        </div>
+      </div>
     </footer>
+
   </div>
 </template>
 
@@ -114,6 +126,7 @@ import projet1 from '~/assets/img/projet1.png';
 import projet2 from '~/assets/img/projet2.png';
 
 const isDarkMode = ref(false)
+const isScrolled = ref(false)
 
 const toggleDarkMode = () => {
   isDarkMode.value = !isDarkMode.value
@@ -123,6 +136,19 @@ const toggleDarkMode = () => {
     document.documentElement.classList.remove('dark')
   }
 }
+
+// Scroll event listener to toggle shadow
+const checkScroll = () => {
+  isScrolled.value = window.scrollY > 50;
+};
+
+onMounted(() => {
+  window.addEventListener('scroll', checkScroll);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener('scroll', checkScroll);
+});
 
 const navItems = ['Services', 'Projets', 'Avis', 'Contact']
 
@@ -168,7 +194,6 @@ const submitForm = () => {
 </script>
 
 <style>
-/* Ensure the page takes up at least the full height of the viewport */
 html, body {
   height: 100%;
 }
@@ -176,6 +201,11 @@ html, body {
 /* Smooth scrolling for anchor links */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 2em;
+}
+
+nav {
+  transition: box-shadow 0.3s ease-in-out;
 }
 
 ::-webkit-scrollbar {
