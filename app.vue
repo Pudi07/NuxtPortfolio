@@ -16,16 +16,16 @@
 
     <!-- Hero Section -->
     <header class="container mx-auto px-6 py-16 text-center">
-      <h1 class="text-5xl md:text-6xl font-extrabold mb-4">Designs That Inspire</h1>
-      <p class="text-xl mb-8">Transforming ideas into stunning digital experiences</p>
+      <h1 class="text-5xl md:text-6xl font-extrabold mb-4">Des designs qui inspirent</h1>
+      <p class="text-xl mb-8">Transformer des idées en expériences numériques époustouflantes</p>
       <button class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-full transition-colors">
-        Get Started
+        Commencer
       </button>
     </header>
 
     <!-- Services Section -->
     <section id="services" class="container mx-auto px-6 py-16">
-      <h2 class="text-3xl font-bold text-center mb-12">My Services</h2>
+      <h2 class="text-3xl font-bold text-center mb-12">Mes Services</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         <div v-for="service in services" :key="service.title" class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg text-center hover:shadow-lg transition-shadow">
           <component :is="service.icon" class="w-12 h-12 mx-auto mb-4 text-purple-600 dark:text-purple-400" />
@@ -37,7 +37,7 @@
 
     <!-- Projects Section -->
     <section id="projects" class="container mx-auto px-6 py-16">
-      <h2 class="text-3xl font-bold text-center mb-12">Recent Projects</h2>
+      <h2 class="text-3xl font-bold text-center mb-12">Projects recents</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <div v-for="project in projects" :key="project.title" class="group relative overflow-hidden rounded-lg">
           <img :src="project.image" :alt="project.title" class="w-full h-64 object-cover transition-transform group-hover:scale-110" />
@@ -53,7 +53,7 @@
 
     <!-- Testimonials Section -->
     <section id="testimonials" class="container mx-auto px-6 py-16">
-      <h2 class="text-3xl font-bold text-center mb-12">What Clients Say</h2>
+      <h2 class="text-3xl font-bold text-center mb-12">Ce que disent les clients</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div v-for="testimonial in testimonials" :key="testimonial.name" class="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg">
           <p class="mb-4 italic">"{{ testimonial.quote }}"</p>
@@ -70,7 +70,7 @@
 
     <!-- Contact Form -->
     <section id="contact" class="container mx-auto px-6 py-16">
-      <h2 class="text-3xl font-bold text-center mb-12">Get In Touch</h2>
+      <h2 class="text-3xl font-bold text-center mb-12">Prenez contact</h2>
       <form @submit.prevent="submitForm" class="max-w-lg mx-auto">
         <div class="mb-4">
           <label for="name" class="block mb-2">Name</label>
@@ -92,7 +92,7 @@
 
     <!-- Footer -->
     <footer class="bg-gray-200 dark:bg-gray-800 text-center py-6">
-      <p>&copy; 2023 WebDesigner. All rights reserved.</p>
+      <p>&copy; 2024 Pierre Barth</p>
     </footer>
   </div>
 </template>
@@ -112,19 +112,17 @@ const toggleDarkMode = () => {
   }
 }
 
-const navItems = ['Services', 'Projects', 'Testimonials', 'Contact']
+const navItems = ['Services', 'Projets', 'Avis', 'Contact']
 
 const services = [
-  { title: 'Web Design', icon: LayoutGrid, description: 'Creating beautiful and functional websites tailored to your needs.' },
-  { title: 'UI/UX Design', icon: Palette, description: 'Crafting intuitive user interfaces and seamless user experiences.' },
-  { title: 'Web Development', icon: Code, description: 'Building robust and scalable web applications with cutting-edge technologies.' },
-  { title: 'SEO Optimization', icon: Globe, description: 'Improving your online visibility and driving organic traffic to your site.' }
+  { title: 'Conception de Sites Web', icon: LayoutGrid, description: 'Création de sites web beaux et fonctionnels adaptés à vos besoins.' },
+  { title: 'Conception UI/UX', icon: Palette, description: 'Création d’interfaces utilisateur intuitives et d’expériences utilisateurs fluides.' },
+  { title: 'Développement Web', icon: Code, description: 'Développement d’applications web robustes et évolutives avec des technologies de pointe.' },
+  { title: 'Optimisation SEO', icon: Globe, description: 'Amélioration de votre visibilité en ligne et génération de trafic organique vers votre site.' }
 ]
 
 const projects = [
   { title: 'E-commerce Platform', image: '/placeholder.svg?height=400&width=600', description: 'A fully responsive online store with seamless checkout process.' },
-  { title: 'Portfolio Website', image: '/placeholder.svg?height=400&width=600', description: 'A sleek and modern portfolio showcasing creative works.' },
-  { title: 'Mobile App UI', image: '/placeholder.svg?height=400&width=600', description: 'User interface design for a productivity mobile application.' }
 ]
 
 const testimonials = [
