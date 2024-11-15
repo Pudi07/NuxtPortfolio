@@ -148,6 +148,14 @@ import projet2 from '~/assets/img/projet2.png';
 import avatar1 from '~/assets/img/37.png';
 import avatar2 from '~/assets/img/58.png';
 
+useHead({
+  title: 'Pierre Barth - Web Designer Freelance',
+  meta: [
+    { name: 'description', content: 'Web designer freelance spécialisé dans la conception de sites web modernes et fonctionnels.' },
+    { name: 'keywords', content: 'web design, web development, freelance, portfolio' }
+  ]
+})
+
 const isDarkMode = ref(false)
 const isScrolled = ref(false)
 
@@ -198,8 +206,8 @@ const projects = [
 ]
 
 const testimonials = [
-  { name: 'John Doe', position: 'CEO, Tech Innovators', quote: 'Working with this web designer was a game-changer for our online presence. Highly recommended!', avatar: avatar1 },
-  { name: 'Jane Smith', position: 'Founder, Creative Studio', quote: 'The attention to detail and creativity in the design process was impressive. Our website looks stunning!', avatar: avatar2 }
+  { name: 'John Doe', position: 'CEO, Tech Innovators', quote: '“Travailler avec Pierre a été une expérience incroyable. Il a su comprendre mes besoins et créer un site vitrine qui représente parfaitement mon entreprise. Très satisfait du résultat !”', avatar: avatar1 },
+  { name: 'Jane Smith', position: 'Founder, Creative Studio', quote: 'Nous avons pu lancer notre boutique en ligne en un temps record. Le site est moderne, fluide et les ventes ont augmenté grâce à l’optimisation SEO', avatar: avatar2 }
 ]
 
 </script>
