@@ -6,7 +6,7 @@
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
-    "deploy": "echo 'dev.pierre-barth.fr' > .output/public/CNAME && touch .output/public/.nojekyll && push-dir --dir=.output/public --branch=gh-pages --cleanup",
+    "deploy": "echo 'dev.pierre-barth.fr' > .output/public/CNAME && powershell -Command \"New-Item -Path .output/public/.nojekyll -ItemType File -Force\" && push-dir --dir=.output/public --branch=gh-pages --cleanup",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
