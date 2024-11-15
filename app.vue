@@ -2,7 +2,10 @@
   <div :class="{ 'dark': isDarkMode }" class="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
     <!-- Navigation -->
     <nav class="container mx-auto px-6 py-4 flex justify-between items-center sticky top-0 z-10 bg-white dark:bg-gray-900 " :class="{'shadow-md': isScrolled}">
-      <a href="#" class="text-2xl font-bold">Pierre Barth</a>
+      <a href="#" class="text-2xl font-bold hidden sm:block">Pierre Barth</a>
+      <a href="#" class="text-2xl font-bold sm:hidden">
+       P<span class="text-purple-600">B</span>
+      </a>
       <div class="flex items-center space-x-4">
         <div v-for="item in navItems" :key="item">
           <a :href="`#${item.toLowerCase()}`" class="hover:text-purple-600 dark:hover:text-purple-400 transition-colors">{{ item }}</a>
@@ -16,8 +19,8 @@
 
     <!-- Hero Section -->
     <header class="container mx-auto px-6 py-16 text-center">
-      <h1 class="text-5xl md:text-6xl font-extrabold mb-4">Des designs qui inspirent</h1>
-      <p class="text-xl mb-8">Transformer des idées en expériences numériques époustouflantes</p>
+      <h1 class="text-5xl md:text-6xl font-extrabold mb-4">Des designs inspirants</h1>
+      <p class="text-xl mb-8">Transformez vos idées en expériences numériques mémorables</p>
       <button class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-full transition-colors">
         <a href=#contact>
         Contactez-moi
@@ -206,7 +209,7 @@ const projects = [
 ]
 
 const testimonials = [
-  { name: 'John Doe', position: 'CEO, Tech Innovators', quote: '“Travailler avec Pierre a été une expérience incroyable. Il a su comprendre mes besoins et créer un site vitrine qui représente parfaitement mon entreprise. Très satisfait du résultat !”', avatar: avatar1 },
+  { name: 'John Doe', position: 'CEO, Tech Innovators', quote: 'Travailler avec Pierre a été une expérience incroyable. Il a su comprendre mes besoins et créer un site vitrine qui représente parfaitement mon entreprise. Très satisfait du résultat !', avatar: avatar1 },
   { name: 'Jane Smith', position: 'Founder, Creative Studio', quote: 'Nous avons pu lancer notre boutique en ligne en un temps record. Le site est moderne, fluide et les ventes ont augmenté grâce à l’optimisation SEO', avatar: avatar2 }
 ]
 
