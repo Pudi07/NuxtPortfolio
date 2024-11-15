@@ -80,7 +80,7 @@
     <!-- Contact Form -->
     <section id="contact" class="container mx-auto px-6 py-16">
       <h2 class="text-3xl font-bold text-center mb-12">Prenez contact</h2>
-      <form @submit.prevent="submitForm" class="max-w-lg mx-auto">
+      <form action="https://formspree.io/f/mdkozvej" method="POST" class="max-w-lg mx-auto">
         <div class="mb-4">
           <label for="name" class="block mb-2">Name</label>
           <input type="text" id="name" v-model="form.name" required class="w-full px-4 py-2 rounded bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white border border-gray-300 dark:border-gray-700" />
@@ -124,6 +124,8 @@ import { LayoutGrid, Palette, Code, Globe, Sun as SunIcon, Moon as MoonIcon } fr
 
 import projet1 from '~/assets/img/projet1.png';
 import projet2 from '~/assets/img/projet2.png';
+import avatar1 from '~/assets/img/37.png';
+import avatar2 from '~/assets/img/58.png';
 
 const isDarkMode = ref(false)
 const isScrolled = ref(false)
@@ -175,8 +177,8 @@ const projects = [
 ]
 
 const testimonials = [
-  { name: 'John Doe', position: 'CEO, Tech Innovators', quote: 'Working with this web designer was a game-changer for our online presence. Highly recommended!', avatar: '/placeholder.svg?height=100&width=100' },
-  { name: 'Jane Smith', position: 'Founder, Creative Studio', quote: 'The attention to detail and creativity in the design process was impressive. Our website looks stunning!', avatar: '/placeholder.svg?height=100&width=100' }
+  { name: 'John Doe', position: 'CEO, Tech Innovators', quote: 'Working with this web designer was a game-changer for our online presence. Highly recommended!', avatar: avatar1 },
+  { name: 'Jane Smith', position: 'Founder, Creative Studio', quote: 'The attention to detail and creativity in the design process was impressive. Our website looks stunning!', avatar: avatar2 }
 ]
 
 const form = ref({
@@ -185,12 +187,6 @@ const form = ref({
   message: ''
 })
 
-const submitForm = () => {
-  // Handle form submission logic here
-  console.log('Form submitted:', form.value)
-  // Reset form after submission
-  form.value = { name: '', email: '', message: '' }
-}
 </script>
 
 <style>
